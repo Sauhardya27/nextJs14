@@ -14,7 +14,8 @@ const PostCard = ({post}) => {
 		<div className={styles.bottom}>
 			<h1 className={styles.title}>{post.title}</h1>
 			<p className={styles.desc}>{post.body}</p>
-			<Link className={styles.link} href={`/blog/${post.id}`}> READ MORE</Link>
+			<Link className={styles.link} href={`/blog/${post.id}`}> READ MORE</Link> 
+			{/* Instead of ${post.id} it will be ${post.slug} */}
 		</div>
 	</div>
   )
