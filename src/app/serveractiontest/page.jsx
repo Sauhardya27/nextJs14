@@ -2,10 +2,10 @@ import { addPost } from "@/lib/action"
 import { deletePost } from "@/lib/action"
 
 const ServerActionTestPage = () => {
-	const actionInComponent = async () => {
-		"use server"
-		console.log("it works")
-	}
+	// const actionInComponent = async () => {
+	// 	"use server"
+	// 	console.log("it works")
+	// }
 
 	return (
 		<div>

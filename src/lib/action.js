@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import { Post } from "./models";
 import { connectToDb } from "./utlis";
-import { signIn } from "./auth";
+import { signIn, signOut } from "./auth";
 
 export const addPost = async (formData) => {
 	// const title = formData.get("title");

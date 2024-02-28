@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
 
 export const { 
-	handlers:{GET, POST}, 
+	handlers: {GET, POST}, 
 	auth, 
 	signIn, 
 	signOut, 
@@ -10,7 +10,7 @@ export const {
 	providers: [ 
 		GitHub({
 			clientId: process.env.GITHUB_ID, 
-			clientSecret: process.env.GITHUB_SECRET
-		}) 
+			clientSecret: process.env.GITHUB_SECRET,
+		}) ,
 	],
 });
