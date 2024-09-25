@@ -1,15 +1,15 @@
-import Links from "./links/Links";
-import Link from 'next/link'
+"use client"
+import Link from "next/link"
+import Links from "./links/Links"
 import styles from "./navbar.module.css"
-import { auth } from "@/lib/auth";
+import { useSession } from "next-auth/react"
 
-const Navbar = async () => {
+const Navbar = () => {
+  const { data: session, status } = useSession()
 
-  const session = await auth();
-  console.log(session)
   return (
     <div className={styles.container}>
-      <Link href="/" className={styles.logo}>Lama</Link>
+      <Link href="/" className={styles.logo}>Logo</Link>
       <div>
         <Links session={session}/>
       </div>

@@ -1,16 +1,21 @@
-// import { auth } from "@/lib/auth";
-// import { signIn } from "next-auth/react";
-import { handleGithubLogin } from "@/lib/action";
+"use client"
+import { useSession, signIn, signOut } from "next-auth/react"
 
-const LoginPage = async () => {
-  
+export default function LoginPage() {
+  const { data: session, status } = useSession()
+  console.log("Session status:", status);
+  console.log("Session data:", session);
+  if (session) {
+    return (
+      <div>
+        Signed in as {session.user.email} <br/>
+        <button onClick={() => signOut()}>Sign out</button>
+      </div>
+    )
+  }
   return (
     <div>
-      <form action={handleGithubLogin}>
-        <button>Login with Github</button>
-      </form>
+      <button onClick={() => signIn("github")}>Login with Github</button>
     </div>
   )
 }
-
-export default LoginPage
