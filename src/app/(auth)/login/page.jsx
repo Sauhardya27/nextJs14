@@ -1,6 +1,7 @@
 "use client"
-import { useSession, signIn, signOut } from "next-auth/react"
-import { login } from "@/lib/action";
+import { useSession, signIn } from "next-auth/react"
+import LoginForm from "@/components/loginForm/loginForm";
+import styles from "./login.module.css"
 
 export default function LoginPage() {
   const { data: session, status } = useSession()
@@ -15,13 +16,11 @@ export default function LoginPage() {
   //   )
   // }
   return (
-    <div>
-      <button onClick={() => signIn("github")}>Login with Github</button>
-      <form action={login}>
-        <input type="text" placeholder="username" name="username" />
-        <input type="password" placeholder="password" name="password" />
-        <button>Login with Credentials</button>
-      </form>
+    <div className={styles.container}>
+      <div className={styles.wrapper}>
+        <button className={styles.github} onClick={() => signIn("github")}>Login with Github</button>
+        <LoginForm />
+      </div>
     </div>
   )
 }

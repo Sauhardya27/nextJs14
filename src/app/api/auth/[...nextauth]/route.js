@@ -36,6 +36,11 @@ const handler = NextAuth({
       clientSecret: process.env.GITHUB_SECRET,
     }),
     CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" }
+      },
       async authorize(credentials) {
         try {
           connectToDb();
