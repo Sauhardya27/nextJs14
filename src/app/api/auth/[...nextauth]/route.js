@@ -27,10 +27,8 @@ const login = async (credentials) => {
   }
 }
 
-
 const handler = NextAuth({
   providers: [
-    // OAuth authentication providers...
     GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
@@ -53,6 +51,20 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user._id;
+        token.username = user.username;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+        session.user.username = token.username;
+      }
+      return session;
+    },
     async signIn({ user, account, profile, email, credentials }) {
       console.log(user, account, profile, email, credentials)
       if (account?.provider === 'github') {
@@ -74,7 +86,13 @@ const handler = NextAuth({
       }
       return true;
     },
-  }
+  },
+  pages: {
+    signIn: '/login',
+  },
+  session: {
+    strategy: "jwt",
+  },
 })
 
 export { handler as GET, handler as POST }

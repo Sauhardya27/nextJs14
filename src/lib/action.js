@@ -79,25 +79,3 @@ export const register = async (previousState, formData) => {
 		return { error: "Something went wrong!" }
 	}
 }
-
-export const login = async (previousState, formData) => {
-	const { username, password } = Object.fromEntries(formData);
-
-	try {
-		const result = await signIn("credentials", {
-			username,
-			password,
-			redirect: false, // Prevent automatic redirect
-		});
-
-		if (result.error) {
-			return { error: "Invalid username or password" };
-		}
-
-		// If we reach here, login was successful
-		return { success: true };
-	} catch (err) {
-		console.error(err);
-		return { error: "An unexpected error occurred. Please try again." };
-	}
-}

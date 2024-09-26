@@ -2,19 +2,27 @@
 import { useSession, signIn } from "next-auth/react"
 import LoginForm from "@/components/loginForm/loginForm";
 import styles from "./login.module.css"
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { data: session, status } = useSession()
-  console.log("Session status:", status);
-  console.log("Session data:", session);
-  // if (session) {
-  //   return (
-  //     <div>
-  //       Signed in as {session.user.email} <br/>
-  //       <button onClick={() => signOut()}>Sign out</button>
-  //     </div>
-  //   )
-  // }
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/");
+    }
+  }, [status, router]);
+
+  if (status === "loading") {
+    return <div>Loading...</div>
+  }
+
+  if (status === "authenticated") {
+    return null;  // We'll redirect in useEffect, so no need to render anything here
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
