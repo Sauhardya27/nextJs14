@@ -27,8 +27,6 @@ const links = [
 
 const Links = ({session}) => {
 	const [open, setOpen] = useState(false);
-	
-	const isAdmin = true;
 
 	return (
 		<div className={styles.container}>
@@ -38,7 +36,7 @@ const Links = ({session}) => {
 				))}
 				{session?.user ? (
 						<>
-							{session.user?.isAdmin && <NavLink item={{ title: "Admin", path: "/login" }} />}
+							{session.user?.isAdmin && <NavLink item={{ title: "Admin", path: "/admin" }} />}
 								<button className={styles.logout} onClick={() => signOut()}>Logout</button>
 							
 						</>
