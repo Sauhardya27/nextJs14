@@ -31,11 +31,11 @@ export const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        try {
-          return await login(credentials);
-        } catch (error) {
-          return null;
+        const user = await login(credentials);
+        if (user) {
+          return user;
         }
+        return null;
       }
     }),
   ],
