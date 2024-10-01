@@ -6,7 +6,7 @@ import { User } from '@/lib/models';
 import bcrypt from 'bcryptjs';
 import { signIn } from "next-auth/react";
 
-export const addPost = async (formData) => {
+export const addPost = async (prevState, formData) => {
 	// const title = formData.get("title");
 	// const desc = formData.get("desc");
 	// const slug = formData.get("slug");
@@ -25,6 +25,7 @@ export const addPost = async (formData) => {
 		await newPost.save();
 		console.log("saved to db")
 		revalidatePath("/blog")
+		revalidatePath("/admin")
 	} catch (err) {
 		console.log(err);
 		return { error: "Something went wrong!" }
@@ -40,6 +41,50 @@ export const deletePost = async (formData) => {
 		await Post.findByIdAndDelete(id);
 		console.log("deleted from db")
 		revalidatePath("/blog")
+		revalidatePath("/admin")
+	} catch (err) {
+		console.log(err);
+		return { error: "Something went wrong!" }
+	}
+}
+
+export const addUser = async (prevState, formData) => {
+
+	const { username, email, password, img, isAdmin } = Object.fromEntries(formData);
+	const isAdminBoolean = isAdmin === 'true';
+
+	try {
+		connectToDb();
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(password, salt);
+
+		const newUser = new User({
+			username, 
+			email, 
+			password: hashedPassword, 
+			img,
+			isAdmin: isAdminBoolean
+		});
+
+		await newUser.save();
+		console.log("saved to db")
+		revalidatePath("/admin")
+	} catch (err) {
+		console.log(err);
+		return { error: "Something went wrong!" }
+	}
+}
+
+export const deleteUser = async (formData) => {
+
+	const { id } = Object.fromEntries(formData);
+
+	try {
+		connectToDb();
+		await Post.deleteMany({ userId: id });
+		await User.findByIdAndDelete(id);
+		console.log("deleted from db")
+		revalidatePath("/admin")
 	} catch (err) {
 		console.log(err);
 		return { error: "Something went wrong!" }
