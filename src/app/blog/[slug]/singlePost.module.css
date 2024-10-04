@@ -1,6 +1,7 @@
 .container{
 	display: flex;
 	gap: 100px;
+	margin-bottom: 50px;
 }
 
 .imgContainer{

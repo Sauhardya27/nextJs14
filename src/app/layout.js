@@ -1,7 +1,6 @@
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/navbar/Navbar'
-import Footer from '@/components/footer/Footer'
 import SessionWrapper from './component/SessionWrapper'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,8 +13,8 @@ const poppins = Poppins({
 
 export const metadata = {
   title: {
-    default: "Next.js 14 Homepage",
-    template: "%s | Next.js 14"
+    default: "Nimble Concepts Homepage",
+    template: "%s | Nimble Concepts"
   },
   description: 'Next.js starter app',
 }
@@ -28,7 +27,6 @@ export default function RootLayout({ children }) {
           <div className='container'>
             <Navbar />
             {children}
-            <Footer />
           </div>
         </SessionWrapper>
       </body>

@@ -8,10 +8,10 @@ const AdminUserForm = () => {
 	return (
 		<form action={formAction} className={styles.form}>
 			<h1>Add New User</h1>
-			<input type="text" placeholder="username" name="username" />
-			<input type="text" placeholder="email" name="email" />
-			<input type="password" placeholder="password" name="password" />
-			<input type="text" placeholder="img" name="img" />
+			<input type="text" placeholder="Username" name="username" />
+			<input type="text" placeholder="Email" name="email" />
+			<input type="password" placeholder="Password" name="password" />
+			<input type="text" placeholder="Img" name="img" />
 			<select name="isAdmin">
 				<option value="false">Is Admin?</option>
 				<option value="false">No</option>

@@ -10,16 +10,17 @@
 	padding: 20px;
 	background-color: var(--bgSoft);
 	border: none;
-	border-radius: 5px;
+	border-radius: 15px;
 	color: var(--textColor);
 }
 
 .form button {
-	padding: 20px;
+	padding: 15px 20px;
 	cursor: pointer;
 	background-color: var(--btn);
 	border: none;
-	border-radius: 5px;
+	border-radius: 15px;
 	color: var(--textColor);
 	font-weight: bold;
+	font-size: 20px;
 }

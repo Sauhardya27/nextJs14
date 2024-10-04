@@ -1,12 +1,13 @@
 .container{
 	display: flex;
 	align-items: center;
-	gap: 100px;
+	gap: 50px;
+	margin-bottom: 80px;
 }
 
 .imgContainer{
 	flex: 1;
-	height: 500px;
+	height: 600px;
 	position: relative;
 }
 
@@ -26,7 +27,7 @@
 
 .form input, .form textarea{
 	padding: 20px;
-	border-radius: 5px;
+	border-radius: 15px;
 	border: none;
 	outline: none;
 	background-color: var(--bgSoft);
@@ -39,7 +40,7 @@
 	color: var(--text);
 	font-weight: bold;
 	border: none;
-	border-radius: 5px;
+	border-radius: 15px;
 	cursor: pointer;
 }
 

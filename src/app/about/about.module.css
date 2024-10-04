@@ -1,14 +1,16 @@
 .container{
 	display: flex;
 	gap: 100px;
+	padding-bottom: 30px;
 }
 
 .textContainer{
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
+	gap: 30px;
 }
+
 .imgContainer{
 	flex: 1;
 	position: relative;
@@ -16,15 +18,19 @@
 
 .subtitle{
 	color: var(--btn);
+	margin-top: 15px;
 }
 
 .title{
-	font-size: 54px;
+	font-size: 60px;
+	line-height: 130%;
 }
 
 .desc{
 	font-size: 20px;
 	font-weight: 300;
+	text-align: justify;
+	margin: 12px auto;
 }
 
 .img{
@@ -45,10 +51,6 @@
 
 .box h1{
 	color: var(--btn);
-}
-
-.img{
-	object-fit: contain;
 }
 
 @media (max-width: 768px) {

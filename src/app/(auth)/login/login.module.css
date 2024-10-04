@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 100px;
 }
 
 .wrapper {
@@ -12,11 +13,12 @@
     flex-direction: column;
     text-align: center;
     gap: 30px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 .github{
 	width: 100%;
 	padding: 20px;
+    border-radius: 15px;
 	cursor: pointer;
 }
